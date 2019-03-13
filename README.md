@@ -47,7 +47,7 @@ Pygame
 Descriptioon des fichiers
 
 Récupération des codes du jeu
-git clone https://github.com/...
+git clone https://github.com/EmilieM71/GameMacGyver.git
 
 Installation nécessaire
 Se placer dans le répertoire du projet et lancer les commmandes suivantes

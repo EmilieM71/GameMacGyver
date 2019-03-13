@@ -19,7 +19,7 @@ arrival_image = "resource/floor-tiles-20x20.png"
 keeper_image = "resource/Gardien.png"  # dimensions 32 * 36 à modifier
 
 # Constantes file
-start_char = 's'
-arrival_char = 'a'
-path_char = '.'
-wall_char = 'w'
+startchar = 's'
+arrivalchar = 'A'
+pathchar = '.'
+wallchar = 'w'
