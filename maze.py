@@ -1,5 +1,4 @@
-from constants import (size_sprite, pathchar, startchar, arrivalchar, wallchar,
-                       wall_image, start_image, arrival_image, cote_window)
+from constants import *
 from position import Position
 import pygame
 
@@ -18,6 +17,7 @@ class Maze:
         self._wall = []
 
         self.structure_maze = self.load_maze_from_file()
+        self.position_start = self.load_maze_from_file()
 
     def is_path_position(self, position):
         return position in self._path
@@ -27,6 +27,7 @@ class Maze:
 
         with open(self.filename, "r") as file:
             self.structure_maze = []
+            self.position_start = []
             for x, line in enumerate(file):
                 x *= size_sprite
                 line_maze = []
@@ -38,17 +39,20 @@ class Maze:
                     elif c == startchar:
                         self.start_list.append(Position(x, y))
                         self._path.append(Position(x, y))
+                        self.position_start = Position(x, y)
                     elif c == arrivalchar:
                         self._arrival.append(Position(x, y))
                         self._path.append(Position(x, y))
                     elif c == wallchar:
                         self._wall.append(Position(x, y))
                 self.structure_maze.append(line_maze)
-        return self.structure_maze
+        return self.structure_maze and self.position_start
 
-    def display(self, window_name):
+    def position_start_hero(self):
+        return self.position_start
+
+    def display(self, window_name, hero_name):
         """function that displays the map of the maze"""
-
         # Crop and resizing start image
         tiles_start = pygame.image.load(start_image).convert()
         image_start = tiles_start.subsurface(160, 20, 20, 20)
@@ -76,6 +80,7 @@ class Maze:
                     window_name.blit(arrival, (x, y))
                 elif letter == startchar:
                     window_name.blit(start, (x, y))
+                    window_name.blit(hero_name, (x, y))
                 num_case += 1
             num_line += 1
 
@@ -83,6 +88,9 @@ class Maze:
 def main():
     level = Maze("Level1")
     print(level)
+    # p = Maze.position_start_hero(level)
+    # print(p)
+
 
 
 if __name__ == "__main__":

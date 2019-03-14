@@ -1,5 +1,8 @@
+from constants import size_sprite
+
+
 class Position:
-    """Classe permettant de définir la position en x et en y"""
+    """class for setting the position in x and y"""
 
     def __init__(self, x, y):
         self.position = (x, y)
@@ -18,19 +21,19 @@ class Position:
     # Méthode qui retourne une position
     def up(self):
         x, y = self.position
-        return Position(x, y - 1)
+        return Position(x, y - size_sprite)
 
     def down(self):
         x, y = self.position
-        return Position(x, y + 1)
+        return Position(x, y + size_sprite)
 
     def right(self):
         x, y = self.position
-        return Position(x + 1, y)
+        return Position(x + size_sprite, y)
 
     def left(self):
         x, y = self.position
-        return Position(x - 1, y)
+        return Position(x - size_sprite, y)
 
 
 def main():
